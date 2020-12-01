@@ -20,7 +20,7 @@ fn main() {
         if x >= 2020 {
             break;
         }
-        for y in values.iter().skip(i + 1).copied() {
+        for y in values[i + 1..].iter().copied() {
             let x_plus_y = x + y;
             if x_plus_y == 2020 {
                 println!("{}", x * y);
@@ -35,12 +35,14 @@ fn main() {
         if x >= 2020 {
             break;
         }
-        for (j, y) in values.iter().copied().enumerate().skip(i + 1) {
+        let values = &values[i + 1..];
+        for (j, y) in values.iter().copied().enumerate() {
             let x_plus_y = x + y;
-            if x_plus_y >= 2020 {
+            if x_plus_y + y > 2020 {
                 break;
             }
-            for z in values.iter().skip(j + 1).copied() {
+            let values = &values[j + 1..];
+            for z in values.iter().copied() {
                 let x_plus_y_plus_z = x_plus_y + z;
                 if x_plus_y_plus_z == 2020 {
                     println!("{}", x * y * z);
