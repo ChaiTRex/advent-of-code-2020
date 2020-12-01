@@ -4,7 +4,9 @@ use std::io::Read;
 fn main() {
     let values = {
         let mut contents = String::new();
-        let _ = File::open("01.txt").unwrap().read_to_string(&mut contents);
+        let _ = File::open("../01.txt")
+            .unwrap()
+            .read_to_string(&mut contents);
 
         let mut values = contents
             .lines()
@@ -34,7 +36,6 @@ fn main() {
             break;
         }
         for (j, y) in values.iter().copied().enumerate().skip(i + 1) {
-            println!("{} {} {} {}", i, x, j, y);
             let x_plus_y = x + y;
             if x_plus_y >= 2020 {
                 break;
