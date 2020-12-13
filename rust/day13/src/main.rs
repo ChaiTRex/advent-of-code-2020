@@ -32,8 +32,8 @@ fn main() {
                 (0, 1),
                 |(result_offset, prime_product), (item_offset, prime)| {
                     (
-                        (result_offset..)
-                            .step_by(prime_product as usize)
+                        (0u64..)
+                            .map(|n| n * prime_product + result_offset)
                             .find(|&n| n % prime == item_offset % prime)
                             .unwrap(),
                         prime_product * prime,
